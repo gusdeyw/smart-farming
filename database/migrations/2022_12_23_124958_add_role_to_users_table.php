@@ -13,7 +13,6 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('role');
             $table->string('tgl_lahir');
             $table->string('alamat');
             $table->string('nama_ibu_kandung');
@@ -23,7 +22,7 @@ return new class extends Migration {
             $table->string('sts_tempat_tinggal');
             $table->string('foto_ktp');
             $table->string('foto_npwp');
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->integer('pendapatan')->nullable();
             $table->string('alamat_tanah')->nullable();
             $table->string('keahlian')->nullable();

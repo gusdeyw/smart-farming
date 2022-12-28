@@ -6,135 +6,62 @@
 
         <x-jet-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" x-data="{role_id: 2}">
             @csrf
 
-            <div class="grid-cols-3">
-                <div>
-                    <div>
-                        <x-jet-label for="role" value="{{ __('Role') }}" />
-                        <x-jet-input id="role" class="block mt-1 w-full" type="text" name="role"
-                            :value="old('role')" required />
-                    </div>
-                    <div>
-                        <x-jet-label for="name" value="{{ __('Name') }}" />
-                        <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name"
-                            :value="old('name')" required autofocus autocomplete="name" />
-                    </div>
+            <div>
+                <x-jet-label for="name" value="{{ __('Name') }}" />
+                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            </div>
 
-                    <div class="mt-4">
-                        <x-jet-label for="email" value="{{ __('Email') }}" />
-                        <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email"
-                            :value="old('email')" required />
-                    </div>
+            <div class="mt-4">
+                <x-jet-label for="email" value="{{ __('Email') }}" />
+                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            </div>
 
-                    <div class="mt-4">
-                        <x-jet-label for="tgl_lahir" value="{{ __('Tanggal Lahir') }}" />
-                        <x-jet-input id="tgl_lahir" class="block mt-1 w-full" type="date" name="tgl_lahir"
-                            :value="old('tgl_lahir')" required />
-                    </div>
+            <div class="mt-4">
+                <x-jet-label for="password" value="{{ __('Password') }}" />
+                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+            </div>
 
-                    <div class="mt-4">
-                        <x-jet-label for="alamat" value="{{ __('Alamat') }}" />
-                        <x-jet-input id="alamat" class="block mt-1 w-full" type="text" name="alamat"
-                            :value="old('alamat')" required />
-                    </div>
+            <div class="mt-4">
+                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            </div>
 
-                    <div class="mt-4">
-                        <x-jet-label for="no_telp" value="{{ __('No Telp') }}" />
-                        <x-jet-input id="no_telp" class="block mt-1 w-full" type="text" name="no_telp"
-                            :value="old('no_telp')" required />
-                    </div>
+            <div class="mt-4">
+                <x-jet-label for="role_id" value="{{ __('Register as:') }}" />
+                <select name="role_id" x-model="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                    <option value="2">Student</option>
+                    <option value="3">Teacher</option>
+                </select>
+            </div>
 
-                    <div class="mt-4">
-                        <x-jet-label for="nama_ibu_kandung" value="{{ __('Nama Ibu Kandung') }}" />
-                        <x-jet-input id="nama_ibu_kandung" class="block mt-1 w-full" type="text"
-                            name="nama_ibu_kandung" :value="old('nama_ibu_kandung')" required />
-                    </div>
-                </div>
-                <div>
-                    <div class="mt-4">
-                        <x-jet-label for="bank" value="{{ __('Bank') }}" />
-                        <x-jet-input id="bank" class="block mt-1 w-full" type="text" name="bank"
-                            :value="old('bank')" required />
-                    </div>
+            <div class="mt-4" x-show="role_id == 2">
+                <x-jet-label for="student_address" value="{{ __('Address') }}" />
+                <x-jet-input id="student_address" class="block mt-1 w-full" type="text" :value="old('student_address')" name="student_address" />
+            </div>
 
-                    <div class="mt-4">
-                        <x-jet-label for="no_rekening" value="{{ __('No Rekening') }}" />
-                        <x-jet-input id="no_rekening" class="block mt-1 w-full" type="text" name="no_rekening"
-                            :value="old('no_rekening')" required />
-                    </div>
+            <div class="mt-4" x-show="role_id == 2">
+                <x-jet-label for="student_licence_number" value="{{ __('Licence Number') }}" />
+                <x-jet-input id="student_licence_number" class="block mt-1 w-full" type="text" :value="old('student_licence_number')" name="student_licence_number" />
+            </div>
 
-                    <div class="mt-4">
-                        <x-jet-label for="sts_tempat_tinggal" value="{{ __('Status Tempat Tinggal') }}" />
-                        <x-jet-input id="sts_tempat_tinggal" class="block mt-1 w-full" type="text"
-                            name="sts_tempat_tinggal" required />
-                    </div>
-
-                    <div class="mt-4">
-                        <x-jet-label for="foto_ktp" value="{{ __('Foto KTP') }}" />
-                        <x-jet-input id="foto_ktp" class="block mt-1 w-full" type="text" name="foto_ktp" required />
-                    </div>
-
-                    <div class="mt-4">
-                        <x-jet-label for="foto_npwp" value="{{ __('Foto NPWP') }}" />
-                        <x-jet-input id="foto_npwp" class="block mt-1 w-full" type="text" name="foto_npwp"
-                            required />
-                    </div>
-
-                    <div class="mt-4">
-                        <x-jet-label for="pendapatan" value="{{ __('Pendapatan') }}" />
-                        <x-jet-input id="pendapatan" class="block mt-1 w-full" type="text" name="pendapatan"
-                            required />
-                    </div>
-                </div>
-                <div>
-                    <div class="mt-4">
-                        <x-jet-label for="alamat_tanah" value="{{ __('Alamat Tanah') }}" />
-                        <x-jet-input id="alamat_tanah" class="block mt-1 w-full" type="text" name="alamat_tanah"
-                            required />
-                    </div>
-
-                    <div class="mt-4">
-                        <x-jet-label for="keahlian" value="{{ __('Keahlian') }}" />
-                        <x-jet-input id="keahlian" class="block mt-1 w-full" type="text" name="keahlian"
-                            required />
-                    </div>
-
-                    <div class="mt-4">
-                        <x-jet-label for="password" value="{{ __('Password') }}" />
-                        <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password"
-                            required autocomplete="new-password" />
-                    </div>
-
-                    <div class="mt-4">
-                        <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                        <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-                    </div>
-                </div>
+            <div class="mt-4" x-show="role_id == 3">
+                <x-jet-label for="teacher_qualifications" value="{{ __('Qualifications') }}" />
+                <x-jet-input id="teacher_qualifications" class="block mt-1 w-full" type="text" :value="old('teacher_qualifications')" name="teacher_qualifications" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-jet-label for="terms">
                         <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms" required />
+                            <x-jet-checkbox name="terms" id="terms"/>
 
                             <div class="ml-2">
                                 {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                    'terms_of_service' =>
-                                        '<a target="_blank" href="' .
-                                        route('terms.show') .
-                                        '" class="underline text-sm text-gray-600 hover:text-gray-900">' .
-                                        __('Terms of Service') .
-                                        '</a>',
-                                    'privacy_policy' =>
-                                        '<a target="_blank" href="' .
-                                        route('policy.show') .
-                                        '" class="underline text-sm text-gray-600 hover:text-gray-900">' .
-                                        __('Privacy Policy') .
-                                        '</a>',
+                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
+                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
                                 ]) !!}
                             </div>
                         </div>
