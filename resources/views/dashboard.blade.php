@@ -10,34 +10,70 @@
             {{-- <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <x-jet-welcome />
             </div> --}}
-            <div class="grid lg:grid-cols-3 gap-4">
+            <div class="flex flex-wrap">
 
-                <div class="card card-body flex items-center">
-                    <div class="flex-1">
-                        <div class="card-header__title mb-2">Current Target</div>
-                        <div class="text-2xl">$12,920</div>
-                        <div class="flex items-center text-sm font-semibold text-success">31.5% <i class="material-icons"
-                                style="font-size:16px;">arrow_upward</i></div>
+                <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+                    <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+                        <div class="flex-auto p-4">
+                            <div class="flex flex-wrap">
+                                <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                    <h5 class="text-blueGray-400 uppercase font-bold text-xs">NEW USERS</h5><span
+                                        class="font-semibold text-xl text-blueGray-700">5</span>
+                                </div>
+                                <div class="relative w-auto pl-4 flex-initial">
+                                    <div
+                                        class="text-green-400 p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-orange-500">
+                                        <i class="fas fa-chart-pie"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-blueGray-400 mt-4"><span class="mr-2 text-red-500"><i
+                                        class="fas fa-arrow-down"></i> 3.48% </span><span
+                                    class="whitespace-nowrap">Update minggu lalu</span></p>
+                        </div>
                     </div>
-                    <div><i class="material-icons text-primary ml-3" style="font-size:48px;">gps_fixed</i></div>
                 </div>
-                <div class="card card-body flex items-center">
-                    <div class="flex-1">
-                        <div class="card-header__title mb-2">Earnings</div>
-                        <div class="text-2xl">$3,642</div>
-                        <div class="flex items-center text-sm font-semibold text-success">51.5% <i
-                                class="material-icons" style="font-size:16px;">arrow_upward</i></div>
+                <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+                    <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+                        <div class="flex-auto p-4">
+                            <div class="flex flex-wrap">
+                                <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                    <h5 class="text-blueGray-400 uppercase font-bold text-xs">Sapi</h5><span
+                                        class="font-semibold text-xl text-blueGray-700">3</span>
+                                </div>
+                                <div class="relative w-auto pl-4 flex-initial">
+                                    <div
+                                        class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-pink-500">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-blueGray-400 mt-4"><span class="mr-2 text-orange-500"><i
+                                        class="fas fa-arrow-down"></i> 1.10% </span><span
+                                    class="whitespace-nowrap">Update minggu lalu</span></p>
+                        </div>
                     </div>
-                    <div><i class="material-icons text-success ml-3" style="font-size:48px;">monetization_on</i></div>
                 </div>
-                <div class="card card-body flex items-center">
-                    <div class="flex-1">
-                        <div class="card-header__title mb-2">Website Traffic</div>
-                        <div class="text-2xl">8,391</div>
-                        <div class="flex items-center text-sm font-semibold text-danger">3.5% <i class="material-icons"
-                                style="font-size:16px;">arrow_downward</i></div>
+                <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+                    <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+                        <div class="flex-auto p-4">
+                            <div class="flex flex-wrap">
+                                <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                    <h5 class="text-blueGray-400 uppercase font-bold text-xs">Terjual</h5><span
+                                        class="font-semibold text-xl text-blueGray-700">2</span>
+                                </div>
+                                <div class="relative w-auto pl-4 flex-initial">
+                                    <div
+                                        class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-emerald-500">
+                                        <i class="fas fa-percent"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-blueGray-400 mt-4"><span class="mr-2 text-emerald-500"><i
+                                        class="fas fa-arrow-up"></i> 12% </span><span class="whitespace-nowrap">Update
+                                    minggu lalu</span></p>
+                        </div>
                     </div>
-                    <div><i class="material-icons text-secondary ml-3" style="font-size:48px;">perm_identity</i></div>
                 </div>
             </div>
         </div>

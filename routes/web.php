@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('register_user', \App\Http\Controllers\Admin\RegisterUserController::class);
+
 Route::middleware(['auth:sanctum', 'verified', 'activated'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
