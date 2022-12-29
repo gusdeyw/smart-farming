@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -18,7 +17,7 @@ return new class extends Migration
             $table->string('tgl_riwayat');
             $table->string('kondisi_hewan');
             $table->string('status_jual')->nullable();
-            $table->string('berat_hewat');
+            $table->integer('berat_hewat');
             $table->string('foto_kondisi');
             $table->timestamps();
         });

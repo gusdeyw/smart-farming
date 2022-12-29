@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->string('sts_tempat_tinggal');
             $table->string('foto_ktp');
             $table->string('foto_npwp');
-            $table->string('status')->nullable();
+            $table->integer('status')->default(0);
             $table->integer('pendapatan')->nullable();
             $table->string('alamat_tanah')->nullable();
             $table->string('keahlian')->nullable();

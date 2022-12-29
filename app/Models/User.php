@@ -28,9 +28,18 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
-        'student_address',
-        'student_licence_number',
-        'teacher_qualifications',
+        'tgl_lahir',
+        'alamat',
+        'no_telp',
+        'nama_ibu_kandung',
+        'bank',
+        'no_rekening',
+        'sts_tempat_tinggal',
+        'foto_ktp',
+        'foto_npwp',
+        'pendapatan',
+        'alamat_tanah',
+        'keahlian',
     ];
 
     /**

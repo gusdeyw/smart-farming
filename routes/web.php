@@ -17,18 +17,34 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified', 'activated'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::group(['middleware' => 'auth'], function() {
-    Route::group(['middleware' => 'role:student', 'prefix' => 'student', 'as' => 'student.'], function() {
-        Route::resource('lessons', \App\Http\Controllers\Students\LessonController::class);
-    });
-   Route::group(['middleware' => 'role:teacher', 'prefix' => 'teacher', 'as' => 'teacher.'], function() {
-       Route::resource('courses', \App\Http\Controllers\Teachers\CourseController::class);
-   });
-    Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function() {
-        Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
-    });
+Route::group(['middleware' => 'auth'], function () {
+    Route::group(
+        ['middleware' => 'role:pemodal', 'prefix' => 'pemodal', 'as' => 'pemodal.'],
+        function () {
+            Route::resource('hewans', \App\Http\Controllers\Pemodals\PemodalHewanController::class);
+            Route::resource('items', \App\Http\Controllers\Pemodals\PemodalItemController::class);
+            Route::resource('riwayats', \App\Http\Controllers\Pemodals\PemodalRiwayatController::class);
+        }
+    );
+    Route::group(
+        ['middleware' => 'role:pengadas', 'prefix' => 'pengadas', 'as' => 'pengadas.'],
+        function () {
+            Route::resource('hewans', \App\Http\Controllers\Pengadas\PengadasHewanController::class);
+            Route::resource('riwayats', \App\Http\Controllers\Pengadas\PengadasRiwayatController::class);
+        }
+    );
+    Route::group(
+        ['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'],
+        function () {
+            Route::resource('users', \App\Http\Controllers\Admin\AdminUserController::class);
+            Route::resource('rekenings', \App\Http\Controllers\Admin\AdminRekeningController::class);
+            Route::resource('hewans', \App\Http\Controllers\Admin\AdminHewanController::class);
+            Route::resource('transaksis', \App\Http\Controllers\Admin\AdminTransaksiController::class);
+            Route::resource('riwayat_hewans', \App\Http\Controllers\Admin\AdminRiwayatController::class);
+        }
+    );
 });
