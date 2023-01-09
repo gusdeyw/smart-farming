@@ -14,6 +14,7 @@
                 <x-jet-label for="role_id" value="{{ __('Register as:') }}" />
                 <select name="role_id" x-model="role_id"
                     class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                    <option value=""></option>
                     <option value="2">Pemodal</option>
                     <option value="3">Pengadas</option>
                 </select>
@@ -87,18 +88,18 @@
             <div class="mt-4">
                 <x-jet-label for="foto_npwp" value="{{ __('Foto NPWP') }}" />
                 <x-jet-input :value="old('foto_npwp')" id="foto_npwp" class="block mt-1 w-full" type="file"
-                    name="foto_npwp" required />
+                    name="foto_npwp" />
             </div>
-            <div class="mt-4" x-show="role_id == 2">
+            <div id="form2" class="mt-4" x-show="role_id == 2">
                 <x-jet-label for="pendapatan" value="{{ __('Pendapatan') }}" />
                 <x-jet-input id="pendapatan" class="block mt-1 w-full" type="text" name="pendapatan" />
             </div>
 
-            <div class="mt-4" x-show="role_id == 3">
+            <div id="form3" class="mt-4" x-show="role_id == 3">
                 <x-jet-label for="alamat_tanah" value="{{ __('Alamat Tanah') }}" />
                 <x-jet-input id="alamat_tanah" class="block mt-1 w-full" type="text" name="alamat_tanah" />
             </div>
-            <div class="mt-4" x-show="role_id == 3">
+            <div id="form3" class="mt-4" x-show="role_id == 3">
                 <x-jet-label for="keahlian" value="{{ __('Keahlian') }}" />
                 <x-jet-input id="keahlian" class="block mt-1 w-full" type="text" name="keahlian" />
             </div>

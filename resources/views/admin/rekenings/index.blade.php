@@ -24,7 +24,7 @@
                         Rekening</button>
                 </form>
                 <div class="overflow-auto">
-                    <table class="table-auto w-full">
+                    <table id="table" class="table-auto w-full">
                         <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                             <tr>
                                 <th class="p-2 whitespace-nowrap">
@@ -90,6 +90,11 @@
                         </tbody>
                     </table>
                 </div>
+                <script type="text/javascript">
+                    $(function() {
+                        var table = $('#table').DataTable({});
+                    });
+                </script>
                 {{-- End Edit  --}}
             </div>
         </div>

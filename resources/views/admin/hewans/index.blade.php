@@ -24,7 +24,7 @@
                         Hewan</button>
                 </form>
                 <div class="overflow-auto">
-                    <table class="table-fixed">
+                    <table id="table" class="table-auto">
                         <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                             <tr>
                                 <th class="p-2 whitespace-nowrap">
@@ -42,9 +42,9 @@
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Modal Hewan</div>
                                 </th>
-                                <th class="p-2 whitespace-nowrap">
+                                {{-- <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Kontrak Hewan</div>
-                                </th>
+                                </th> --}}
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Target Berat Hewan</div>
                                 </th>
@@ -54,12 +54,12 @@
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Gambar</div>
                                 </th>
-                                <th class="p-2 whitespace-nowrap">
+                                {{-- <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Pemodal</div>
                                 </th>
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Pengadas</div>
-                                </th>
+                                </th> --}}
                             </tr>
                         </thead>
 
@@ -110,11 +110,11 @@
                                             Rp.{{ number_format($hewan->modal_hewan) }}
                                         </div>
                                     </td>
-                                    <td class="p-2 whitespace-nowrap">
+                                    {{-- <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
                                             {{ $hewan->kontrak_hewan }}
                                         </div>
-                                    </td>
+                                    </td> --}}
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
                                             {{ $hewan->target_berat_hewan }} Kg
@@ -132,6 +132,8 @@
                                                 <p class="p-2 bg-blue-400 rounded-sm">Siap jual</p>
                                             @elseif($hewan->status_hewan == 4)
                                                 <p class="p-2 bg-green-400 rounded-sm">Terjual</p>
+                                            @elseif($hewan->status_hewan == 5)
+                                                <p class="p-2 bg-red-400 rounded-sm">Meninggal</p>
                                             @endif
                                         </div>
                                     </td>
@@ -142,7 +144,7 @@
                                                 Gambar</a>
                                         </div>
                                     </td>
-                                    <td class="p-2 whitespace-nowrap">
+                                    {{-- <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
                                             {{ $hewan->id_pemodal }}
                                         </div>
@@ -150,12 +152,17 @@
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
                                             {{ $hewan->id_pengadas }}
-                                        </div>
+                                        </div> --}}
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
+                <script type="text/javascript">
+                    $(function() {
+                        var table = $('#table').DataTable({});
+                    });
+                </script>
                 {{-- End Edit  --}}
             </div>
         </div>

@@ -17,12 +17,9 @@
             <div class="bg-white rounded-md shadow-lg p-5">
                 {{-- Edit here  --}}
                 <div class="overflow-auto">
-                    <table class="table-fixed">
+                    <table id="table" class="table-auto">
                         <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                             <tr>
-                                <th class="p-2 whitespace-nowrap">
-                                    <div class="font-semibold text-center">Action</div>
-                                </th>
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Nama Hewan</div>
                                 </th>
@@ -47,9 +44,9 @@
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Gambar</div>
                                 </th>
-                                <th class="p-2 whitespace-nowrap">
+                                {{-- <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Pengadas</div>
-                                </th>
+                                </th> --}}
                             </tr>
                         </thead>
 
@@ -57,29 +54,6 @@
                             <!-- record 1 -->
                             @foreach ($hewans as $hewan)
                                 <tr>
-                                    <td class="p-2 whitespace-nowrap">
-                                        <div class="flex justify-center">
-                                            <form action="{{ route('admin.hewans.edit', $hewan->id) }}">
-                                                @csrf
-                                                @method('GET')
-                                                <button type="submit" class="p-2 font-medium text-lg">
-                                                    <i class="fa-solid fa-pen-to-square"></i>
-                                                </button>
-                                            </form>
-
-                                            <form id="delete-form{{ $hewan->id }}"
-                                                action="{{ route('admin.hewans.destroy', $hewan->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                            </form>
-
-                                            <button type="button" class="p-2 font-medium text-lg"
-                                                onclick="confirmationDeleteRekening({{ $hewan->id }});">
-                                                <i class="fa-solid fa-trash-can"></i>
-                                            </button>
-
-                                        </div>
-                                    </td>
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
                                             {{ $hewan->nama_hewan }}
@@ -132,15 +106,20 @@
                                                 Gambar</a>
                                         </div>
                                     </td>
-                                    <td class="p-2 whitespace-nowrap">
+                                    {{-- <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
                                             {{ $hewan->id_pengadas }}
-                                        </div>
+                                        </div> --}}
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
+                <script type="text/javascript">
+                    $(function() {
+                        var table = $('#table').DataTable({});
+                    });
+                </script>
                 {{-- End Edit  --}}
             </div>
         </div>

@@ -17,11 +17,11 @@
             <div class="bg-white rounded-md shadow-lg p-5">
                 {{-- Edit here  --}}
                 <div class="overflow-auto">
-                    <table class="table-fixed">
+                    <table id="table" class="table-auto">
                         <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                             <tr>
                                 <th class="p-2 whitespace-nowrap">
-                                    <div class="font-semibold text-center">Action</div>
+                                    <div class="font-semibold text-center">Validasi</div>
                                 </th>
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-center">Status</div>
@@ -165,12 +165,20 @@
                                     </td>
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
-                                            {{ $user->foto_ktp }}
+                                            <a class="border-blue-500 border-2 text-blue-500 font-semibold p-2 rounded-sm"
+                                                href="/photo_ktp/{{ $user->foto_ktp }}" target="_blank">Lihat
+                                                KTP</a>
                                         </div>
                                     </td>
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
-                                            {{ $user->foto_npwp }}
+                                            @if ($user->foto_npwp != null)
+                                                <a class="border-blue-500 border-2 text-blue-500 font-semibold p-2 rounded-sm"
+                                                    href="/photo_npwp/{{ $user->foto_npwp }}" target="_blank">Lihat
+                                                    NPWP</a>
+                                            @else
+                                                Tidak ada NPWP
+                                            @endif
                                         </div>
                                     </td>
                                     <td class="p-2 whitespace-nowrap">
@@ -193,6 +201,11 @@
                         </tbody>
                     </table>
                 </div>
+                <script type="text/javascript">
+                    $(function() {
+                        var table = $('#table').DataTable({});
+                    });
+                </script>
                 {{-- End Edit  --}}
             </div>
         </div>

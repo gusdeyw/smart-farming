@@ -66,6 +66,17 @@ class PengadasHewanController extends Controller
 
         $model->save();
 
+        if ($request->status_jual == "Siap Jual") {
+            $stats = Hewan::find($request->id_hewan);
+            $stats->status_hewan = 3;
+            $stats->save();
+        }
+        if ($request->status_jual == "Meninggal") {
+            $stats = Hewan::find($request->id_hewan);
+            $stats->status_hewan = 5;
+            $stats->save();
+        }
+
         return redirect()->route('pengadas.hewans.index')
             ->with('success', 'Data berhasil disimpan');
     }

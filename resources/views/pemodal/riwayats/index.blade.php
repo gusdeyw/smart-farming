@@ -10,7 +10,7 @@
             <div class="bg-white rounded-md shadow-lg p-5">
                 {{-- Edit here  --}}
                 <div class="">
-                    <table class="table-auto w-full">
+                    <table id="table" class="table-auto w-full">
                         <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                             <tr>
                                 <th class="p-2 whitespace-nowrap">
@@ -27,6 +27,9 @@
                                 </th>
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Foto Kondisi</div>
+                                </th>
+                                <th class="p-2 whitespace-nowrap">
+                                    <div class="font-semibold text-left">Nama Pengadas</div>
                                 </th>
                             </tr>
                         </thead>
@@ -63,11 +66,21 @@
                                                 Gambar</a>
                                         </div>
                                     </td>
+                                    <td class="p-2 whitespace-nowrap">
+                                        <div class="text-left">
+                                            {{ $hewan->nama_pengadas }}
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
+                <script type="text/javascript">
+                    $(function() {
+                        var table = $('#table').DataTable({});
+                    });
+                </script>
                 {{-- End Edit  --}}
             </div>
         </div>

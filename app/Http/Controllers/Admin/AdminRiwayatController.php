@@ -20,6 +20,9 @@ class AdminRiwayatController extends Controller
     public function index()
     {
         $hewans = DB::table('riwayat_hewans')
+            ->select('*', 'pa.name as nama_pemodal', 'po.name as nama_pengadas')
+            ->join('users as pa', 'pa.id', '=', 'riwayat_hewans.id_pemodal')
+            ->join('users as po', 'po.id', '=', 'riwayat_hewans.id_pengadas')
             ->get();
         return view('admin.riwayat_hewans.index', compact('hewans'));
     }

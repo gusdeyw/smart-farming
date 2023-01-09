@@ -49,10 +49,9 @@
                         <label for="subject" class="mb-3 block text-base font-medium text-[#07074D]">
                             Kontrak Hewan
                         </label>
-                        <input required type="text" name="kontrak_hewan" id="kontrak_hewan"
-                            placeholder="Kontrak Hewan"
+                        <textarea required type="text" name="kontrak_hewan" id="blogcontent" placeholder="Kontrak Hewan"
                             class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                            value="{{ $model->kontrak_hewan }}" />
+                            value="{{ $model->kontrak_hewan }}"></textarea>
                     </div>
                     <div class="mb-5">
                         <label for="subject" class="mb-3 block text-base font-medium text-[#07074D]">
@@ -78,6 +77,11 @@
                     </div>
                 </form>
 
+                <script>
+                    CKEDITOR.replace('blogcontent', {
+                        height: 300,
+                    });
+                </script>
                 {{-- End Edit  --}}
             </div>
         </div>

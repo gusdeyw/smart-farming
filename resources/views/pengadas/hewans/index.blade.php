@@ -17,7 +17,7 @@
             <div class="bg-white rounded-md shadow-lg p-5">
                 {{-- Edit here  --}}
                 <div class="overflow-auto">
-                    <table class="table-fixed">
+                    <table id="table" class="table-auto">
                         <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                             <tr>
                                 <th class="p-2 whitespace-nowrap">
@@ -137,6 +137,11 @@
                         </tbody>
                     </table>
                 </div>
+                <script type="text/javascript">
+                    $(function() {
+                        var table = $('#table').DataTable({});
+                    });
+                </script>
                 {{-- End Edit  --}}
             </div>
         </div>

@@ -20,6 +20,8 @@ class PengadasRiwayatController extends Controller
     public function index()
     {
         $hewans = DB::table('riwayat_hewans')
+            ->select('*', 'pa.name as nama_pemodal')
+            ->join('users as pa', 'pa.id', '=', 'riwayat_hewans.id_pemodal')
             ->where('id_pengadas', '=', auth()->user()->id)
             ->get();
         return view('pengadas.riwayats.index', compact('hewans'));

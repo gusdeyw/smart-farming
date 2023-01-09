@@ -21,7 +21,8 @@
     <nav
         class="hidden md:grid px-5 md:px-12 lg:px-20 py-3 md:py-5 lg:px-7 bg-white w-full sticky top-0 left-0 border border-b-1 grid-cols-12">
         <div class="col-span-6 md:col-span-4 lg:col-span-4 flex items-center space-x-2">
-            <i class="fa-regular fa-cow"></i> Aplikasi Pengadas
+            <img src="https://cdn-icons-png.flaticon.com/512/220/220127.png" class="h-[52px]" alt=""> Aplikasi
+            Pengadas
         </div>
         <div class="col-span-6 md:col-span-4 lg:col-span-4 flex space-x-4 justify-center">
 
@@ -109,19 +110,19 @@
         <div class="col-span-12 md:col-span-6 py-5 md:py-10 px-5 md:px-20">
             <div class="">
                 <h1 class="text-2xl md:text-5xl font-bold leading-relaxed">
-                    Pendanaan Pertanian Aman dan Berdampak
+                    Peternakan Ngadas
                 </h1>
                 <p class="font-semibold my-4">
-                    Mulai pendanaan pertanian yang aman, sekaligus berdampak kepada
-                    masyarakat dan lingkungan.
+                    Mulai pendanaan peternakan yang aman dan nyaman berinvestasi
+                    Pendanaan Berasuransi
                 </p>
             </div>
-            <div class="space-x-2 md:space-x-5 mt-8">
+            {{-- <div class="space-x-2 md:space-x-5 mt-8">
                 <a href="#" class="text-xs md:text-base bg-[#176149] px-10 py-3 text-white rounded-md">Memulai</a>
                 <a href="#"
                     class="text-xs md:text-base px-10 py-3 text-black hover:text-white hover:bg-[#176149] transition ease-in-out duration-300 rounded-md">Pelajari
                     Lebih Lanjut</a>
-            </div>
+            </div> --}}
             <div class="block md:flex space-y-2 mt-8 space-x-0 md:space-x-5">
                 <div class="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -130,7 +131,7 @@
                             d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z"
                             clip-rule="evenodd" />
                     </svg>
-                    <span class="font-bold text-sm md:text-base">Pendanaan Berasuransi</span>
+                    <span class="font-bold text-sm md:text-base">Melestarikan Sistem Ngadas Tradisional Tali</span>
                 </div>
                 <div class="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -139,7 +140,7 @@
                             d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z"
                             clip-rule="evenodd" />
                     </svg>
-                    <span class="font-bold text-sm md:text-base">Berdampak Lingkungan</span>
+                    <span class="font-bold text-sm md:text-base">Memilih proyek pendanaan sesui dana</span>
                 </div>
             </div>
             <div class="block md:flex mt-2 space-y-2 md:space-y-0 space-x-0 md:space-x-5">
@@ -150,7 +151,7 @@
                             d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z"
                             clip-rule="evenodd" />
                     </svg>
-                    <span class="font-bold text-sm md:text-base">Memberdayakan Petani</span>
+                    <span class="font-bold text-sm md:text-base">Memilih sistem kontrak yang di inginkan</span>
                 </div>
                 <div class="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -159,13 +160,12 @@
                             d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z"
                             clip-rule="evenodd" />
                     </svg>
-                    <span class="font-bold text-sm md:text-base">Mendukung Ketahanan Pangan</span>
+                    <span class="font-bold text-sm md:text-base">Mendukung Pemberian Pangan Mengambil Alam</span>
                 </div>
             </div>
         </div>
         <div class="col-span-12 md:col-span-6">
-            <img src="https://img.freepik.com/premium-photo/holstein-cow-standing_191971-14134.jpg?w=2000"
-                alt="" />
+            <img src="https://dualimacreative.com/istockphoto-1208005114-612x612.jpg" alt="" />
         </div>
     </header>
     <main>
@@ -173,10 +173,12 @@
         <section class="py-10 grid grid-cols-12">
             <div class="col-span-12">
                 <h2 class="text-2xl md:text-5xl text-center font-bold">
-                    Pendanaan Pertanian Lebih Mudah Bersama Kami
+                    Pendanaan Peternakan Lebih Mudah Bersama Kami
                 </h2>
                 <p class="text-center text-neutral-600 text-lg mt-3">
-                    Pendanaan Pertanian Lebih Mudah Bersama Kami
+                    Keuntungan menggunakan sistem peternakan ngadas ini di bandingkan menabung di BANK
+                    sebagai contoh: menabung di bang mendapatkan bunga 2.000% per tahun, sedangkan investasi
+                    petenakan ngadas memiliki keuntungan 79,2% dengan jangka waktu 1-2 tahun.
                 </p>
             </div>
         </section>
@@ -184,20 +186,27 @@
             <div class="text-center font-bold text-2xl md:text-5xl text-white">
                 Mengapa Bergabung dengan Kami?
             </div>
+            <div class="text-white text-center mt-4 leading-relaxed">
+                Keuntungan menggunakan sistem peternakan ngadas ini di bandingkan menabung di BANK
+                sebagai contoh: menabung di bang mendapatkan bunga 2.00% pertahun, sedangkan investasi
+                petenakan ngadas memiliki keuntungan 140% dengan jangka waktu 1-2 tahun.
+            </div>
             <div class="text-white text-center w-full md:w-1/2 mx-auto leading-relaxed mt-4">
 
             </div>
             <div class="grid grid-cols-12 mt-10 gap-y-10">
                 <div class="col-span-12 md:col-span-3">
                     <div class="bg-orange-500 rounded-full p-3 w-fit mx-auto">
-                        <img src="https://igrow.asia/images/mengapa-item-1.png" class="h-[32px]" alt="" />
+                        <img src="https://cdn-icons-png.flaticon.com/512/220/220127.png" class="h-[32px]"
+                            alt="" />
+                        {{-- <i class="fa-light fa-cow"></i> --}}
                     </div>
                     <div class="text-white font-bold text-center mt-4 text-lg">
-                        Pendanaan Berdampak
+                        Pendanaan Berdampak ke Peternakaan
                     </div>
                     <div class="text-white text-center mt-4 leading-relaxed">
-                        Pemberi pendanaan ikut berdampak terhadap lingkungan dan sosial
-                        disamping mendapatkan margin
+                        Memberi pendanaan yang berdampak terhadap di lingkungan sekitar kita
+                        yang kekurangan modal pembelian hewan ternak
                     </div>
                 </div>
                 <div class="col-span-12 md:col-span-3">
@@ -205,11 +214,12 @@
                         <img src="https://igrow.asia/images/mengapa-item-2.png" class="h-[32px]" alt="" />
                     </div>
                     <div class="text-white font-bold text-center mt-4 text-lg">
-                        Pendanaan Berdampak
+                        Pendanaan ke Peternak
                     </div>
                     <div class="text-white text-center mt-4 leading-relaxed">
-                        Pemberi pendanaan ikut berdampak terhadap lingkungan dan sosial
-                        disamping mendapatkan margin
+                        Memberi pendanaan kepada peternak yang kekurangan modal untuk membeli hewan ternak
+                        setelah pemodal mendapat dana maka penyelenggara akan menkonfirmasi kepeternak dan
+                        penyelengara akan menyiapkan hewan ternak
                     </div>
                 </div>
                 <div class="col-span-12 md:col-span-3">
@@ -220,8 +230,8 @@
                         Pendanaan Berdampak
                     </div>
                     <div class="text-white text-center mt-4 leading-relaxed">
-                        Pemberi pendanaan ikut berdampak terhadap lingkungan dan sosial
-                        disamping mendapatkan margin
+                        -
+                        -
                     </div>
                 </div>
                 <div class="col-span-12 md:col-span-3">
@@ -229,11 +239,10 @@
                         <img src="https://igrow.asia/images/mengapa-item-4.png" class="h-[32px]" alt="" />
                     </div>
                     <div class="text-white font-bold text-center mt-4 text-lg">
-                        Pendanaan Berdampak
+                        Ketahanan Pakan Ternak
                     </div>
                     <div class="text-white text-center mt-4 leading-relaxed">
-                        Pemberi pendanaan ikut berdampak terhadap lingkungan dan sosial
-                        disamping mendapatkan margin
+                        Memberikan pakan ternak berupa rumput-rumputan yang mengambil dari alam
                     </div>
                 </div>
             </div>
@@ -280,28 +289,13 @@
                 <a href=""
                     class="text-white bg-[#176149] block w-fit mx-auto rounded-md px-3 py-3 font-bold">Daftar
                     Sekarang</a>
-            </div>
+
+                <div class="w-80 justify-items-center mx-auto mt-8">
+                    <p class="justify-center">Tlp. 0895355541127 (Anggun)</p>
+                    <p class="justify-center">Jln. Tanah lot Kediri, Tabanan</p>
+                </div>
         </section>
-        <section class="grid grid-cols-12 py-10 px-5 md:px-20 gap-y-10">
-            <div class="col-span-12 md:col-span-6">
-                <div class="text-2xl font-bold text-center mb-5">
-                    Telah Berizin dan Diawasi oleh
-                </div>
-                <div>
-                    <img src="https://igrow.asia/images/ojk-home-footer.png" class="mx-auto h-[75px]"
-                        alt="" />
-                </div>
-            </div>
-            <div class="col-span-12 md:col-span-6">
-                <div class="text-2xl font-bold text-center mb-5">
-                    Anggota Terdaftar Dari
-                </div>
-                <div>
-                    <img src="https://igrow.asia/images/afpi-home-footer.png" class="mx-auto h-[75px]"
-                        alt="" />
-                </div>
-            </div>
-        </section>
+
     </main>
 
 

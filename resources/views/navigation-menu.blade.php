@@ -4,15 +4,15 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                {{-- <div class="flex-shrink-0 flex items-center">
+                    <a href="{{ route('dashboard.index') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
-                </div>
+                </div> --}}
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link href="{{ route('dashboard.index') }}" :active="request()->routeIs('dashboard.index')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
 
@@ -32,6 +32,12 @@
                         <x-jet-nav-link href="{{ route('admin.riwayat_hewans.index') }}" :active="request()->routeIs('admin.riwayat_hewans.index')">
                             {{ __('Riwayat Hewan') }}
                         </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('admin.laporans.index') }}" :active="request()->routeIs('admin.laporans.index')">
+                            {{ __('Laporan') }}
+                        </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('admin.transfers.index') }}" :active="request()->routeIs('admin.transfers.index')">
+                            {{ __('Transfer') }}
+                        </x-jet-nav-link>
                         @endif
 
                         @if (auth()->user()->role_id == 2)
@@ -39,7 +45,7 @@
                                 {{ __('Hewan') }}
                             </x-jet-nav-link>
                             <x-jet-nav-link href="{{ route('pemodal.items.index') }}" :active="request()->routeIs('pemodal.items.index')">
-                                {{ __('List Hewan') }}
+                                {{ __('Proyek Pendanaan') }}
                             </x-jet-nav-link>
                             <x-jet-nav-link href="{{ route('pemodal.riwayats.index') }}" :active="request()->routeIs('pemodal.riwayats.index')">
                                 {{ __('Riwayat Hewan') }}
@@ -192,7 +198,7 @@
             <!-- Responsive Navigation Menu -->
             <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
                 <div class="pt-2 pb-3 space-y-1">
-                    <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-responsive-nav-link href="{{ route('dashboard.index') }}" :active="request()->routeIs('dashboard.index')">
                         {{ __('Dashboard') }}
                     </x-jet-responsive-nav-link>
                 </div>

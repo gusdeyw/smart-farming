@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,12 @@ Route::get('/', function () {
 
 Route::resource('register_user', \App\Http\Controllers\Admin\RegisterUserController::class);
 
-Route::middleware(['auth:sanctum', 'verified', 'activated'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified', 'activated'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
+Route::group(['middleware' => 'auth:sanctum', 'verified', 'activated'], function () {
+    Route::resource('dashboard', \App\Http\Controllers\DashboardController::class);
+});
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group(
@@ -47,6 +51,8 @@ Route::group(['middleware' => 'auth'], function () {
             Route::resource('hewans', \App\Http\Controllers\Admin\AdminHewanController::class);
             Route::resource('transaksis', \App\Http\Controllers\Admin\AdminTransaksiController::class);
             Route::resource('riwayat_hewans', \App\Http\Controllers\Admin\AdminRiwayatController::class);
+            Route::resource('laporans', \App\Http\Controllers\Admin\AdminLaporanController::class);
+            Route::resource('transfers', \App\Http\Controllers\Admin\AdminTransferController::class);
         }
     );
 });

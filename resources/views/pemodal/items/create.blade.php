@@ -8,6 +8,12 @@
     <div>
         <div class="max-w-3xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="bg-white rounded-md shadow-lg p-5">
+                Teknis Pengadas<br>
+                <br>
+
+                {{ $model->kontrak_hewan }}
+            </div>
+            <div class="bg-white rounded-md shadow-lg p-5">
                 {{-- Edit here  --}}
                 <form action="{{ route('pemodal.items.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -93,6 +99,9 @@
                         <button
                             class="mb-3 bg-blue-400 text-white font-semibold p-2 rounded-sm shadow-sm hover:bg-blue-200"
                             type="submit">Submit</button>
+                        <button
+                            class="mb-3 bg-gray-400 text-white font-semibold p-2 rounded-sm shadow-sm hover:bg-blue-200"
+                            type="button" onclick="history.back()">Batal</button>
                     </div>
                 </form>
 

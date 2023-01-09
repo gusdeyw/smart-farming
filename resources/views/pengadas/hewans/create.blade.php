@@ -45,6 +45,9 @@
                             <option value="Siap Jual">
                                 Siap Jual
                             </option>
+                            <option value="Meinggal">
+                                Meninggal
+                            </option>
                         </select>
                     </div>
                     <div class="mb-5">
