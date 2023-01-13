@@ -19,6 +19,9 @@ class AdminTransaksiController extends Controller
     public function index()
     {
         $transaksis = DB::table('transaksis')
+            ->select('*', 'pa.name as nama_pemodal', 'hn.nama_hewan as nama_hewans')
+            ->join('users as pa', 'pa.id', '=', 'transaksis.id_pemodal')
+            ->join('hewans as hn', 'hn.id', '=', 'transaksis.id_hewan')
             ->get();
         return view('admin.transaksis.index', compact('transaksis'));
     }

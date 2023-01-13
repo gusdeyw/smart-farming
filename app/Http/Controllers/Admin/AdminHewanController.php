@@ -19,6 +19,9 @@ class AdminHewanController extends Controller
     public function index()
     {
         $hewans = DB::table('hewans')
+            ->select('*', 'pa.name as nama_pemodal', 'po.name as nama_pengadas', 'hewans.id as IDhewan')
+            ->join('users as pa', 'pa.id', '=', 'hewans.id_pemodal')
+            ->join('users as po', 'po.id', '=', 'hewans.id_pengadas')
             ->get();
         return view('admin.hewans.index', compact('hewans'));
     }

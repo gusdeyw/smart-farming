@@ -17,6 +17,9 @@
                                     <div class="font-semibold text-left">Tanggal Riwayat</div>
                                 </th>
                                 <th class="p-2 whitespace-nowrap">
+                                    <div class="font-semibold text-left">Nama Hewan</div>
+                                </th>
+                                <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Kondisi Hewan</div>
                                 </th>
                                 <th class="p-2 whitespace-nowrap">
@@ -41,6 +44,11 @@
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
                                             {{ $hewan->tgl_riwayat }}
+                                        </div>
+                                    </td>
+                                    <td class="p-2 whitespace-nowrap">
+                                        <div class="text-left">
+                                            {{ $hewan->nama_hewan }}
                                         </div>
                                     </td>
                                     <td class="p-2 whitespace-nowrap">
@@ -78,7 +86,11 @@
                 </div>
                 <script type="text/javascript">
                     $(function() {
-                        var table = $('#table').DataTable({});
+                        var table = $('#table').DataTable({
+                            search: {
+                                search: "{{ !empty($_GET) ? $_GET['nama_hewan'] : '' }}"
+                            }
+                        });
                     });
                 </script>
                 {{-- End Edit  --}}

@@ -35,9 +35,9 @@
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Modal Hewan</div>
                                 </th>
-                                <th class="p-2 whitespace-nowrap">
+                                {{-- <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Kontrak Hewan</div>
-                                </th>
+                                </th> --}}
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Target Berat Hewan</div>
                                 </th>
@@ -62,7 +62,7 @@
                                 <tr>
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="flex justify-center">
-                                            <form action="{{ route('admin.transfers.edit', $hewan->id) }}"
+                                            <form action="{{ route('admin.transfers.edit', $hewan->IDhewan) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('GET')
@@ -93,11 +93,11 @@
                                             Rp.{{ number_format($hewan->modal_hewan) }}
                                         </div>
                                     </td>
-                                    <td class="p-2 whitespace-nowrap">
+                                    {{-- <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
                                             {{ $hewan->kontrak_hewan }}
                                         </div>
-                                    </td>
+                                    </td> --}}
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
                                             {{ $hewan->target_berat_hewan }} Kg
@@ -127,12 +127,12 @@
                                     </td>
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
-                                            {{ $hewan->id_pemodal }}
+                                            {{ $hewan->nama_pemodal }}
                                         </div>
                                     </td>
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
-                                            {{ $hewan->id_pengadas }}
+                                            {{ $hewan->nama_pengadas }}
                                         </div>
                                 </tr>
                             @endforeach

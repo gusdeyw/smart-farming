@@ -130,12 +130,12 @@
                                     </td>
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
-                                            {{ $transaksi->id_pemodal }}
+                                            {{ $transaksi->nama_pemodal }}
                                         </div>
                                     </td>
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
-                                            {{ $transaksi->id_hewan }}
+                                            {{ $transaksi->nama_hewans }}
                                         </div>
                                     </td>
                                 </tr>

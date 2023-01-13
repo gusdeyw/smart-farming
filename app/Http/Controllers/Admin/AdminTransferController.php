@@ -20,6 +20,9 @@ class AdminTransferController extends Controller
     public function index()
     {
         $hewans = DB::table('hewans')
+            ->select('*', 'pa.name as nama_pemodal', 'po.name as nama_pengadas', 'hewans.id as IDhewan')
+            ->join('users as pa', 'pa.id', '=', 'hewans.id_pemodal')
+            ->join('users as po', 'po.id', '=', 'hewans.id_pengadas')
             ->where('status_hewan', '=', 3)
             ->get();
         return view('admin.transfers.index', compact('hewans'));
@@ -43,20 +46,45 @@ class AdminTransferController extends Controller
      */
     public function store(Request $request)
     {
-        $model = new Laporan;
-        $model->jenis = $request->jenis;
-        $model->keterangan = $request->keterangan;
-        $model->jumlah = $request->jumlah;
-        $model->id_pemodal = $request->id_pemodal;
-        $model->id_pengadas = $request->id_pengadas;
-        $model->save();
-
         $hewans = Hewan::find($request->id_hewan);
         $jumlahbersih = $request->jumlah - $hewans->modal_hewan;
 
         $pembagian = $jumlahbersih * 45 / 100;
 
         $totaltransfer = $pembagian + $pembagian;
+
+        $uang1 = DB::table('uangs')
+            ->latest()
+            ->first();
+        $money1 = new Uang;
+        $money1->uang = $uang1->uang + $jumlahbersih;
+        $money1->save();
+
+        $model = new Laporan;
+        $model->jenis = $request->jenis;
+        $model->keterangan = $request->keterangan;
+        $model->jumlah = $pembagian;
+        $model->id_pemodal = $request->id_pemodal;
+        if ($request->file('bukti_pemodal')) {
+            $file1 = $request->file('bukti_pemodal');
+            $nama_file1 = time() . str_replace(" ", "", $file1->getClientOriginalName());
+            $file1->move('bukti_transfer_penjualan', $nama_file1);
+            $model->bukti_transfer = $nama_file1;
+        }
+        $model->save();
+
+        $model1 = new Laporan;
+        $model1->jenis = $request->jenis;
+        $model1->keterangan = $request->keterangan;
+        $model1->jumlah = $pembagian;
+        $model1->id_pengadas = $request->id_pengadas;
+        if ($request->file('bukti_pengadas')) {
+            $file = $request->file('bukti_pengadas');
+            $nama_file = time() . str_replace(" ", "", $file->getClientOriginalName());
+            $file->move('bukti_transfer_penjualan', $nama_file);
+            $model1->bukti_transfer = $nama_file;
+        }
+        $model1->save();
 
         $uangs = DB::table('uangs')
             ->latest()
@@ -92,7 +120,9 @@ class AdminTransferController extends Controller
     public function edit($id)
     {
         $hewans = Hewan::find($id);
-        return view('admin.transfers.create', compact('hewans'));
+        $pemodals = User::find($hewans->id_pemodal);
+        $pengadas = User::find($hewans->id_pengadas);
+        return view('admin.transfers.create', compact('hewans', 'pemodals', 'pengadas'));
     }
 
     /**

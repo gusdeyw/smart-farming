@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::resource('/', \App\Http\Controllers\welcomeController::class);
+
 
 Route::resource('register_user', \App\Http\Controllers\Admin\RegisterUserController::class);
 

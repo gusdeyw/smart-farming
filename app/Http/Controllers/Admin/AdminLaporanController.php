@@ -21,6 +21,9 @@ class AdminLaporanController extends Controller
     public function index()
     {
         $laporans = DB::table('laporans')
+            ->select('*', 'pa.name as nama_pemodal', 'po.name as nama_pengadas', 'laporans.created_at as waktu')
+            ->leftJoin('users as pa', 'pa.id', '=', 'laporans.id_pemodal')
+            ->leftJoin('users as po', 'po.id', '=', 'laporans.id_pengadas')
             ->get();
         $uangs = DB::table('uangs')->latest()
             ->first();

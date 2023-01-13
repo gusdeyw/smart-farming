@@ -7,11 +7,11 @@
 
     <div>
         <div class="max-w-3xl mx-auto py-10 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-md shadow-lg p-5">
+            <div class="bg-white rounded-md shadow-lg p-5 mb-3">
                 Teknis Pengadas<br>
                 <br>
 
-                {{ $model->kontrak_hewan }}
+                {!! $model->kontrak_hewan !!}
             </div>
             <div class="bg-white rounded-md shadow-lg p-5">
                 {{-- Edit here  --}}

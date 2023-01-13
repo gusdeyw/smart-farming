@@ -32,9 +32,9 @@
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Modal Hewan</div>
                                 </th>
-                                <th class="p-2 whitespace-nowrap">
+                                {{-- <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Kontrak Hewan</div>
-                                </th>
+                                </th> --}}
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Target Berat Hewan</div>
                                 </th>
@@ -44,9 +44,12 @@
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Gambar</div>
                                 </th>
-                                {{-- <th class="p-2 whitespace-nowrap">
+                                <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Pengadas</div>
-                                </th> --}}
+                                </th>
+                                <th class="p-2 whitespace-nowrap">
+                                    <div class="font-semibold text-left">Riwayat</div>
+                                </th>
                             </tr>
                         </thead>
 
@@ -74,11 +77,11 @@
                                             Rp.{{ number_format($hewan->modal_hewan) }}
                                         </div>
                                     </td>
-                                    <td class="p-2 whitespace-nowrap">
+                                    {{-- <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
                                             {{ $hewan->kontrak_hewan }}
                                         </div>
-                                    </td>
+                                    </td> --}}
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
                                             {{ $hewan->target_berat_hewan }} Kg
@@ -106,10 +109,17 @@
                                                 Gambar</a>
                                         </div>
                                     </td>
-                                    {{-- <td class="p-2 whitespace-nowrap">
+                                    <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
-                                            {{ $hewan->id_pengadas }}
-                                        </div> --}}
+                                            {{ $hewan->nama_pengadas }}
+                                        </div>
+                                    <td class="p-2 whitespace-nowrap">
+                                        <div class="text-left">
+                                            <a class="border-blue-500 border-2 text-blue-500 font-semibold p-2 rounded-sm"
+                                                href="/pemodal/riwayats?nama_hewan={{ $hewan->nama_hewan }}">Lihat
+                                                Riwayat</a>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

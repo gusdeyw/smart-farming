@@ -35,9 +35,9 @@
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Modal Hewan</div>
                                 </th>
-                                <th class="p-2 whitespace-nowrap">
+                                {{-- <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Kontrak Hewan</div>
-                                </th>
+                                </th> --}}
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Target Berat Hewan</div>
                                 </th>
@@ -51,7 +51,7 @@
                                     <div class="font-semibold text-left">Pemodal</div>
                                 </th>
                                 <th class="p-2 whitespace-nowrap">
-                                    <div class="font-semibold text-left">Pengadas</div>
+                                    <div class="font-semibold text-left">Riwayat</div>
                                 </th>
                             </tr>
                         </thead>
@@ -62,7 +62,7 @@
                                 <tr>
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="flex justify-center">
-                                            <form action="{{ route('pengadas.hewans.edit', $hewan->id) }}">
+                                            <form action="{{ route('pengadas.hewans.edit', $hewan->IDhewan) }}">
                                                 @csrf
                                                 @method('GET')
                                                 <button
@@ -91,11 +91,11 @@
                                             Rp.{{ number_format($hewan->modal_hewan) }}
                                         </div>
                                     </td>
-                                    <td class="p-2 whitespace-nowrap">
+                                    {{-- <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
                                             {{ $hewan->kontrak_hewan }}
                                         </div>
-                                    </td>
+                                    </td> --}}
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
                                             {{ $hewan->target_berat_hewan }} Kg
@@ -125,13 +125,16 @@
                                     </td>
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
-                                            {{ $hewan->id_pemodal }}
+                                            {{ $hewan->nama_pemodal }}
                                         </div>
                                     </td>
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
-                                            {{ $hewan->id_pengadas }}
+                                            <a class="border-blue-500 border-2 text-blue-500 font-semibold p-2 rounded-sm"
+                                                href="/pengadas/riwayats?nama_hewan={{ $hewan->nama_hewan }}">Lihat
+                                                Riwayat</a>
                                         </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

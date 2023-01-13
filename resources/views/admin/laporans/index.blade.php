@@ -41,6 +41,17 @@
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Jumlah</div>
                                 </th>
+                                <th class="p-2 whitespace-nowrap">
+                                    <div class="font-semibold text-left">Waktu</div>
+                                </th>
+
+                                <th class="p-2 whitespace-nowrap">
+                                    <div class="font-semibold text-left">Pengadas / Pemodal</div>
+                                </th>
+
+                                <th class="p-2 whitespace-nowrap">
+                                    <div class="font-semibold text-left">Bukti Transfer</div>
+                                </th>
 
                             </tr>
                         </thead>
@@ -62,6 +73,34 @@
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
                                             Rp.{{ number_format($laporan->jumlah) }}
+                                        </div>
+                                    </td>
+                                    <td class="p-2 whitespace-nowrap">
+                                        <div class="text-left">
+                                            {{ $laporan->waktu }}
+                                        </div>
+                                    </td>
+                                    <td class="p-2 whitespace-nowrap">
+                                        <div class="text-left">
+                                            @if ($laporan->nama_pengadas != null)
+                                                Nama Pengadas: {{ $laporan->nama_pengadas }}
+                                            @elseif ($laporan->nama_pemodal != null)
+                                                Nama Pemodal: {{ $laporan->nama_pemodal }}
+                                            @else
+                                                -
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td class="p-2 whitespace-nowrap">
+                                        <div class="text-left">
+                                            @if ($laporan->bukti_transfer != null)
+                                                <a class="border-blue-500 border-2 text-blue-500 font-semibold p-2 rounded-sm"
+                                                    href="/bukti_transfer_penjualan/{{ $laporan->bukti_transfer }}"
+                                                    target="_blank">Lihat
+                                                    Bukti TF</a>
+                                            @else
+                                                -
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>

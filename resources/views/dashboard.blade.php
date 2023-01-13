@@ -72,7 +72,7 @@
                                 <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                                     <h5 class="text-blueGray-400 uppercase font-bold text-xs">Total Penjualan</h5>
                                     <span
-                                        class="font-semibold text-xl text-blueGray-700">RP.{{ number_format($jum) }}</span>
+                                        class="font-semibold text-xl text-blueGray-700">Rp.{{ number_format($jum) }}</span>
                                 </div>
 
                             </div>

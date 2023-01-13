@@ -20,7 +20,9 @@ class PengadasHewanController extends Controller
     public function index()
     {
         $hewans = DB::table('hewans')
-            ->where('id_pengadas', '=', auth()->user()->id)
+            ->select('*', 'pa.name as nama_pemodal', 'hewans.id as IDhewan')
+            ->join('users as pa', 'pa.id', '=', 'hewans.id_pemodal')
+            ->where('hewans.id_pengadas', '=', auth()->user()->id)
             ->get();
         return view('pengadas.hewans.index', compact('hewans'));
     }
@@ -101,6 +103,7 @@ class PengadasHewanController extends Controller
     public function edit($id)
     {
         $model = Hewan::find($id);
+
         return view(
             'pengadas.hewans.create',
             compact(

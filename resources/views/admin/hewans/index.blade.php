@@ -54,12 +54,12 @@
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Gambar</div>
                                 </th>
-                                {{-- <th class="p-2 whitespace-nowrap">
+                                <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Pemodal</div>
                                 </th>
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Pengadas</div>
-                                </th> --}}
+                                </th>
                             </tr>
                         </thead>
 
@@ -69,7 +69,7 @@
                                 <tr>
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="flex justify-center">
-                                            <form action="{{ route('admin.hewans.edit', $hewan->id) }}">
+                                            <form action="{{ route('admin.hewans.edit', $hewan->IDhewan) }}">
                                                 @csrf
                                                 @method('GET')
                                                 <button type="submit" class="p-2 font-medium text-lg">
@@ -77,14 +77,15 @@
                                                 </button>
                                             </form>
 
-                                            <form id="delete-form{{ $hewan->id }}"
-                                                action="{{ route('admin.hewans.destroy', $hewan->id) }}" method="POST">
+                                            <form id="delete-form{{ $hewan->IDhewan }}"
+                                                action="{{ route('admin.hewans.destroy', $hewan->IDhewan) }}"
+                                                method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
 
                                             <button type="button" class="p-2 font-medium text-lg"
-                                                onclick="confirmationDeleteRekening({{ $hewan->id }});">
+                                                onclick="confirmationDeleteRekening({{ $hewan->IDhewan }});">
                                                 <i class="fa-solid fa-trash-can"></i>
                                             </button>
 
@@ -144,15 +145,24 @@
                                                 Gambar</a>
                                         </div>
                                     </td>
-                                    {{-- <td class="p-2 whitespace-nowrap">
+                                    <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
-                                            {{ $hewan->id_pemodal }}
+                                            @if ($hewan->nama_pemodal != null)
+                                                {{ $hewan->nama_pemodal }}
+                                            @else
+                                                -
+                                            @endif
                                         </div>
                                     </td>
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
-                                            {{ $hewan->id_pengadas }}
-                                        </div> --}}
+                                            @if ($hewan->nama_pengadas != null)
+                                                {{ $hewan->nama_pengadas }}
+                                            @else
+                                                -
+                                            @endif
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

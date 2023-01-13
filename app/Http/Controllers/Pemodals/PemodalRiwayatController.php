@@ -22,7 +22,8 @@ class PemodalRiwayatController extends Controller
         $hewans = DB::table('riwayat_hewans')
             ->select('*', 'po.name as nama_pengadas')
             ->join('users as po', 'po.id', '=', 'riwayat_hewans.id_pengadas')
-            ->where('id_pemodal', '=', auth()->user()->id)
+            ->join('hewans as hn', 'hn.id', '=', 'riwayat_hewans.id_hewan')
+            ->where('riwayat_hewans.id_pemodal', '=', auth()->user()->id)
             ->get();
         return view('pemodal.riwayats.index', compact('hewans'));
     }
