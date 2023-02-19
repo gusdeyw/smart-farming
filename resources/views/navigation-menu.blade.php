@@ -59,6 +59,9 @@
                             <x-jet-nav-link href="{{ route('pemodal.riwayats.index') }}" :active="request()->routeIs('pemodal.riwayats.index')">
                                 {{ __('Riwayat Hewan') }}
                             </x-jet-nav-link>
+                            <x-jet-nav-link href="{{ route('pemodal.laporans.index') }}" :active="request()->routeIs('pemodal.laporans.index')">
+                                {{ __('Bukti Transfer') }}
+                            </x-jet-nav-link>
                         @endif
 
                         @can('manage-courses')
@@ -67,6 +70,9 @@
                             </x-jet-nav-link>
                             <x-jet-nav-link href="{{ route('pengadas.riwayats.index') }}" :active="request()->routeIs('pengadas.riwayats.index')">
                                 {{ __('Riwayat Hewan') }}
+                            </x-jet-nav-link>
+                            <x-jet-nav-link href="{{ route('pengadas.laporans.index') }}" :active="request()->routeIs('pengadas.laporans.index')">
+                                {{ __('Bukti Transfer') }}
                             </x-jet-nav-link>
                             @endif
                         </div>

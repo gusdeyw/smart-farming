@@ -40,12 +40,18 @@
                     </div>
                     <div class="mb-5 border-2 rounded-md p-2">
                         <p class="font-bold">Informasi Pemodal</p>
-                        <p>Nama : {{ $pemodals->name }}</p>
-                        <p>Nomor Rekening : {{ $pemodals->no_rekening }}</p>
-                        <p>Nama Bank : {{ $pemodals->bank }}</p>
-                        <p>Nomor Telp : {{ $pemodals->no_telp }}</p>
-                        <input required type="file" name="bukti_pemodal" id="bukti_pemodal"
-                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                        @foreach ($pemodals as $pemodal)
+                            <p>Nama : {{ $pemodal->name }}</p>
+                            <p>Nomor Rekening : {{ $pemodal->no_rekening }}</p>
+                            <p>Nama Bank : {{ $pemodal->bank }}</p>
+                            <p>Nomor Telp : {{ $pemodal->no_telp }}</p>
+                            <p>Persentase : {{ $pemodal->persentase }}%</p>
+                            <p>Jumlah Modal : {{ $pemodal->jumlah_setor }}</p>
+                            <input required type="file" name="bukti_pemodal"
+                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                            <br>
+                        @endforeach
+
                     </div>
                     <div class="mb-5 border-2 rounded-md p-2">
                         <p class="font-bold">Informasi Pengadas</p>

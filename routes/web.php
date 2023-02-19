@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::resource('hewans', \App\Http\Controllers\Pemodals\PemodalHewanController::class);
             Route::resource('items', \App\Http\Controllers\Pemodals\PemodalItemController::class);
             Route::resource('riwayats', \App\Http\Controllers\Pemodals\PemodalRiwayatController::class);
+            Route::resource('laporans', \App\Http\Controllers\Pemodals\PemodalLaporanController::class);
         }
     );
     Route::group(
@@ -43,6 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
         function () {
             Route::resource('hewans', \App\Http\Controllers\Pengadas\PengadasHewanController::class);
             Route::resource('riwayats', \App\Http\Controllers\Pengadas\PengadasRiwayatController::class);
+            Route::resource('laporans', \App\Http\Controllers\Pengadas\PengadasLaporanController::class);
         }
     );
     Route::group(

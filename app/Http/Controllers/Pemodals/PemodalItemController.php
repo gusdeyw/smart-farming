@@ -181,10 +181,15 @@ class PemodalItemController extends Controller
             ->orderByDesc('grup')
             ->limit(1)
             ->get();
-        $grupNow = $pemodals1[0]->grup;
-        if (($grupNow * $model->modal_group) - $totalDanaTerkumpul != 0) {
-            $grupNow = $grupNow - 1;
+        if (count($pemodals1) != 0) {
+            $grupNow = $pemodals1[0]->grup;
+            if (($grupNow * $model->modal_group) - $totalDanaTerkumpul != 0) {
+                $grupNow = $grupNow - 1;
+            }
+        } else {
+            $grupNow = 0;
         }
+
         $rek = Rekening::all();
         // $user->update($request->all());
         // if ($hewannya->status == 1) {

@@ -17,7 +17,7 @@ class PemodalHewanController extends Controller
     public function index()
     {
         $hewans = DB::table('hewans')
-            ->select('*', 'po.name as nama_pengadas')
+            ->select('*', 'po.name as nama_pengadas', 'hewans.id as IDhewan')
             ->join('users as po', 'po.id', '=', 'hewans.id_pengadas')
             ->where('hewans.id_pemodal', '=', auth()->user()->id)
             ->where('status_hewan', '>', 1)

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Pengadas;
+namespace App\Http\Controllers\Pemodals;
 
 use App\Models\Hewan;
 use Illuminate\Http\Request;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\File;
 
-class PengadasHewanController extends Controller
+class PemodalLaporanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,12 +19,15 @@ class PengadasHewanController extends Controller
      */
     public function index()
     {
-        $hewans = DB::table('hewans')
-            ->select('*', 'pa.name as nama_pemodal', 'hewans.id as IDhewan')
-            ->join('users as pa', 'pa.id', '=', 'hewans.id_pemodal')
-            ->where('hewans.id_pengadas', '=', auth()->user()->id)
-            ->get();
-        return view('pengadas.hewans.index', compact('hewans'));
+        $laporans = DB::table('laporans')
+        ->select('*', 'pa.name as nama_pemodal', 'po.name as nama_pengadas', 'laporans.created_at as waktu')
+        ->leftJoin('users as pa', 'pa.id', '=', 'laporans.id_pemodal')
+        ->leftJoin('users as po', 'po.id', '=', 'laporans.id_pengadas')
+        ->where('laporans.id_pemodal', '=', auth()->user()->id)
+        ->get();
+    $uangs = DB::table('uangs')->latest()
+        ->first();
+    return view('pemodal.laporans.index', compact('laporans', 'uangs'));
     }
 
     /**
@@ -56,7 +59,6 @@ class PengadasHewanController extends Controller
         $model->kondisi_hewan = $request->kondisi_hewan;
         $model->status_jual = $request->status_jual;
         $model->berat_hewat = $request->berat_hewan;
-        $model->status_berat = $request->status_berat;
         $model->id_pemodal = $request->id_pemodal;
         $model->id_hewan = $request->id_hewan;
         $model->id_pengadas = $request->id_pengadas;
@@ -68,17 +70,6 @@ class PengadasHewanController extends Controller
         }
 
         $model->save();
-
-        if ($request->status_jual == "Siap Jual") {
-            $stats = Hewan::find($request->id_hewan);
-            $stats->status_hewan = 3;
-            $stats->save();
-        }
-        if ($request->status_jual == "Meninggal") {
-            $stats = Hewan::find($request->id_hewan);
-            $stats->status_hewan = 5;
-            $stats->save();
-        }
 
         return redirect()->route('pengadas.hewans.index')
             ->with('success', 'Data berhasil disimpan');
@@ -104,7 +95,6 @@ class PengadasHewanController extends Controller
     public function edit($id)
     {
         $model = Hewan::find($id);
-
         return view(
             'pengadas.hewans.create',
             compact(

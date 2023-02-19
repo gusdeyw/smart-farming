@@ -34,6 +34,9 @@
                                     <div class="font-semibold text-left">Nama Hewan</div>
                                 </th>
                                 <th class="p-2 whitespace-nowrap">
+                                    <div class="font-semibold text-left">ID Hewan</div>
+                                </th>
+                                <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Jenis Hewan</div>
                                 </th>
                                 <th class="p-2 whitespace-nowrap">
@@ -94,6 +97,11 @@
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
                                             {{ $hewan->nama_hewan }}
+                                        </div>
+                                    </td>
+                                    <td class="p-2 whitespace-nowrap">
+                                        <div class="text-left">
+                                            {{ $hewan->IDhewan }}
                                         </div>
                                     </td>
                                     <td class="p-2 whitespace-nowrap">

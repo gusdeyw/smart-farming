@@ -120,7 +120,12 @@ class AdminTransferController extends Controller
     public function edit($id)
     {
         $hewans = Hewan::find($id);
-        $pemodals = User::find($hewans->id_pemodal);
+        $pemodals = DB::table('pembagians')
+            ->select('*', 'pa.name as nama_pemodal')
+            ->join('users as pa', 'pa.id', '=', 'pembagians.id_pemodal')
+            ->where('id_group', '=', $hewans->id_group)
+            ->where('grup', '=', $hewans->id_group)
+            ->get();
         $pengadas = User::find($hewans->id_pengadas);
         return view('admin.transfers.create', compact('hewans', 'pemodals', 'pengadas'));
     }

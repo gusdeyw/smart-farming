@@ -9,8 +9,8 @@
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="bg-white rounded-md shadow-lg p-5">
                 {{-- Edit here  --}}
-                <div class="">
-                    <table id="table" class="table-auto w-full">
+                <div class="overflow-auto">
+                    <table id="table" class="table-auto">
                         <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                             <tr>
                                 <th class="p-2 whitespace-nowrap">
