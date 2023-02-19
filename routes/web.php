@@ -55,6 +55,9 @@ Route::group(['middleware' => 'auth'], function () {
             Route::resource('riwayat_hewans', \App\Http\Controllers\Admin\AdminRiwayatController::class);
             Route::resource('laporans', \App\Http\Controllers\Admin\AdminLaporanController::class);
             Route::resource('transfers', \App\Http\Controllers\Admin\AdminTransferController::class);
+            Route::resource('groups', \App\Http\Controllers\Admin\AdminGroupController::class);
+            Route::resource('project', \App\Http\Controllers\Admin\AdminProjectController::class);
+            Route::resource('pengadas', \App\Http\Controllers\Admin\AdminPengadasController::class);
         }
     );
 });

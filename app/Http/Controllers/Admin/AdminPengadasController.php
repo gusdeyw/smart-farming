@@ -2,29 +2,25 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Transaksi;
+use App\Models\Hewan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Hewan;
 use Illuminate\Support\Facades\DB;
 
-class AdminTransaksiController extends Controller
+class AdminPengadasController extends Controller
 {
     /**
-     * Display a listing of the resource.transaksis
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $transaksis = DB::table('transaksis')
-            // ->select("*")
-            ->select('transaksis.*', 'pa.name as nama_pemodal', 'hs.nama_group as nama_groups')
-            ->join('users as pa', 'pa.id', '=', 'transaksis.id_pemodal')
-            ->join('group_hewans as hs', 'hs.id', '=', 'transaksis.id_group')
+        $users = DB::table('users')
+            ->where('role_id', '=', 3)
             ->get();
-        return view('admin.transaksis.index', compact('transaksis'));
+        return view('admin.pengadas.index', compact('users'));
     }
 
     /**
@@ -45,17 +41,7 @@ class AdminTransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        $transaksi = Transaksi::find($request->id_transaksi);
-        $transaksi->status_transaksi = 2;
-        $transaksi->save();
-
-        $hewan = Hewan::find($request->id_hewan);
-        $hewan->id_pengadas = $request->id;
-        $hewan->status_hewan = 2;
-        $hewan->save();
-
-        return redirect()->route('admin.transaksis.index')
-            ->with('success', 'Pengadas berhasil ditambahkan.');
+        //
     }
 
     /**
@@ -77,17 +63,24 @@ class AdminTransaksiController extends Controller
      */
     public function edit($id)
     {
-        $users = DB::table('users')
-            ->where('role_id', '=', 3)
+        $hewans = DB::table('hewans')
+            ->where('id_pengadas', '=', $id)
             ->get();
-        $model = Transaksi::find($id);
-        $hewans = Hewan::find($model->id_hewan);
+        $jumlahhewan = count($hewans);
+        $hewans = DB::table('riwayat_hewans')
+            ->select('berat_hewat')
+            ->where('id_pengadas', '=', $id)
+            ->get();
+        $a = array();
+        foreach ($hewans as $key => $value) {
+            array_push($a, number_format($value->berat_hewat));
+        }
+        $average = array_sum($a) / count($a);
         return view(
-            'admin.transaksis.create',
+            'admin.pengadas.detail',
             compact(
-                'model',
-                'users',
-                'hewans'
+                'jumlahhewan',
+                'average'
             )
         );
     }
@@ -102,11 +95,16 @@ class AdminTransaksiController extends Controller
     public function update(Request $request, $id)
     {
 
-        $transnya = Transaksi::find($id);
-        $transnya->status_transaksi = 1;
-        $transnya->save();
-        return redirect()->route('admin.transaksis.index')
-            ->with('success', 'Transaksi updated successfully');
+        $usernya = User::find($id);
+        // $user->update($request->all());
+        if ($usernya->status == 1) {
+            $usernya->status = 0;
+        } else {
+            $usernya->status = 1;
+        }
+        $usernya->save();
+        return redirect()->route('admin.users.index')
+            ->with('success', 'User updated successfully');
     }
 
     /**

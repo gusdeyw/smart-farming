@@ -59,6 +59,25 @@
                     </div>
                     <div class="mb-5">
                         <label for="subject" class="mb-3 block text-base font-medium text-[#07074D]">
+                            Status Berat Badan
+                        </label>
+                        <select required type="text" name="status_berat" id="status_berat"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+                            <option value="">
+                            </option>
+                            <option value="Tidak Bertambah">
+                                Tidak Bertambah
+                            </option>
+                            <option value="Bertambah">
+                                Bertambah
+                            </option>
+                            <option value="Berkurang">
+                                Berkurang
+                            </option>
+                        </select>
+                    </div>
+                    <div class="mb-5">
+                        <label for="subject" class="mb-3 block text-base font-medium text-[#07074D]">
                             Photo Kondisi
                         </label>
                         <input required type="file" name="foto_kondisi" id="foto_kondisi" placeholder="gambar"

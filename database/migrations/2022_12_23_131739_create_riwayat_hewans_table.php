@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->string('status_jual')->nullable();
             $table->integer('berat_hewat');
             $table->string('foto_kondisi');
+            $table->string('status_berat');
             $table->timestamps();
         });
     }

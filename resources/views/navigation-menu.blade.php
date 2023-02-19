@@ -20,8 +20,17 @@
                         <x-jet-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('admin.users.index')">
                             {{ __('Users') }}
                         </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('admin.pengadas.index') }}" :active="request()->routeIs('admin.pengadas.index')">
+                            {{ __('Pengadas') }}
+                        </x-jet-nav-link>
                         <x-jet-nav-link href="{{ route('admin.hewans.index') }}" :active="request()->routeIs('admin.hewans.index')">
                             {{ __('Hewan') }}
+                        </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('admin.groups.index') }}" :active="request()->routeIs('admin.groups.index')">
+                            {{ __('Group Hewan') }}
+                        </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('admin.project.index') }}" :active="request()->routeIs('admin.project.index')">
+                            {{ __('List Proyek') }}
                         </x-jet-nav-link>
                         <x-jet-nav-link href="{{ route('admin.transaksis.index') }}" :active="request()->routeIs('admin.transaksis.index')">
                             {{ __('Transaksi') }}

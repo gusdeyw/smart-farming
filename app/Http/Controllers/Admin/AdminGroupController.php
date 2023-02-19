@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Pengadas;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Hewan;
+use App\Models\Group_hewan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Riwayat_hewan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\File;
 
-class PengadasRiwayatController extends Controller
+class AdminGroupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,13 +19,10 @@ class PengadasRiwayatController extends Controller
      */
     public function index()
     {
-        $hewans = DB::table('riwayat_hewans')
-            ->select('*', 'pa.name as nama_pemodal')
-            ->join('users as pa', 'pa.id', '=', 'riwayat_hewans.id_pemodal')
-            ->join('hewans as hn', 'hn.id', '=', 'riwayat_hewans.id_hewan')
-            ->where('riwayat_hewans.id_pengadas', '=', auth()->user()->id)
+        $hewans = DB::table('group_hewans')
+            ->select('*')
             ->get();
-        return view('pengadas.riwayats.index', compact('hewans'));
+        return view('admin.groups.index', compact('hewans'));
     }
 
     /**
@@ -35,9 +32,9 @@ class PengadasRiwayatController extends Controller
      */
     public function create()
     {
-        $model = new Hewan();
+        $model = new Group_hewan();
         return view(
-            'admin.hewans.create',
+            'admin.groups.create',
             compact(
                 'model'
             )
@@ -52,25 +49,24 @@ class PengadasRiwayatController extends Controller
      */
     public function store(Request $request)
     {
-        $model = new Riwayat_hewan;
-        $model->tgl_riwayat = $request->tgl_riwayat;
-        $model->kondisi_hewan = $request->kondisi_hewan;
-        $model->status_jual = $request->status_jual;
-        $model->berat_hewat = $request->berat_hewan;
-        $model->status_berat = $request->status_berat;
-        $model->id_pemodal = $request->id_pemodal;
-        $model->id_hewan = $request->id_hewan;
-        $model->id_pengadas = $request->id_pengadas;
-        if ($request->file('foto_kondisi')) {
-            $file = $request->file('foto_kondisi');
+        $model = new Group_hewan;
+        $model->nama_group = $request->nama_hewan;
+        $model->jenis_group = $request->jenis_hewan;
+        $model->harga_group = $request->harga_hewan;
+        $model->modal_group = $request->modal_hewan;
+        $model->kontrak_group = $request->kontrak_hewan;
+        $model->banyak_sapi = $request->banyak_hewan;
+        $model->target_berat_group = $request->target_berat_hewan;
+        if ($request->file('gambar')) {
+            $file = $request->file('gambar');
             $nama_file = time() . str_replace(" ", "", $file->getClientOriginalName());
-            $file->move('update_photo_hewan', $nama_file);
-            $model->foto_kondisi = $nama_file;
+            $file->move('photo_hewan_group', $nama_file);
+            $model->gambar_group = $nama_file;
         }
 
         $model->save();
 
-        return redirect()->route('pengadas.hewans.index')
+        return redirect()->route('admin.groups.index')
             ->with('success', 'Data berhasil disimpan');
     }
 
@@ -93,9 +89,9 @@ class PengadasRiwayatController extends Controller
      */
     public function edit($id)
     {
-        $model = Hewan::find($id);
+        $model = Group_hewan::find($id);
         return view(
-            'pengadas.hewans.create',
+            'admin.groups.edit',
             compact(
                 'model'
             )
@@ -112,23 +108,24 @@ class PengadasRiwayatController extends Controller
     public function update(Request $request, $id)
     {
 
-        $model = Hewan::find($id);
-        $model->nama_hewan = $request->nama_hewan;
-        $model->jenis_hewan = $request->jenis_hewan;
-        $model->harga_hewan = $request->harga_hewan;
-        $model->modal_hewan = $request->modal_hewan;
-        $model->kontrak_hewan = $request->kontrak_hewan;
-        $model->target_berat_hewan = $request->target_berat_hewan;
+        $model = Group_hewan::find($id);
+        $model->nama_group = $request->nama_hewan;
+        $model->jenis_group = $request->jenis_hewan;
+        $model->harga_group = $request->harga_hewan;
+        $model->modal_group = $request->modal_hewan;
+        $model->kontrak_group = $request->kontrak_hewan;
+        $model->banyak_sapi = $request->banyak_hewan;
+        $model->target_berat_group = $request->target_berat_hewan;
         if ($request->file('gambar')) {
             $file = $request->file('gambar');
             $nama_file = time() . str_replace(" ", "", $file->getClientOriginalName());
-            $file->move('photo_hewan', $nama_file);
-            $model->gambar = $nama_file;
+            $file->move('photo_hewan_group', $nama_file);
+            $model->gambar_group = $nama_file;
         }
 
         $model->save();
 
-        return redirect()->route('admin.hewans.index')
+        return redirect()->route('admin.groups.index')
             ->with('success', 'Data berhasil diperbaharui');
     }
 
@@ -140,9 +137,17 @@ class PengadasRiwayatController extends Controller
      */
     public function destroy($id)
     {
-        $model = Hewan::find($id);
+        $model = Group_hewan::find($id);
         $model->delete();
-        return redirect()->route('admin.hewans.index')
+        return redirect()->route('admin.groups.index')
             ->with('success', 'Data berhasil dihapus');
+    }
+
+    public function detail($id)
+    {
+        $model = Group_hewan::find($id);
+        ddd($model);
+        // $model->delete();
+        // return view('admin.groups.index', compact('hewans'));
     }
 }

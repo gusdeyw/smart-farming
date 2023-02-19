@@ -19,48 +19,113 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // $hewans = DB::table('hewans')
-        //     ->where('status_hewan', '=', 3)
-        //     ->get();
-
-        // $posts = Hewan::withCount([
-        //     'nama_hewan' => function (Builder $query) {
-        //         $query->where('content', 'like', 'code%');
-        //     }
-        // ])->get();
-
-        $hewans = DB::table('hewans')
-            ->get();
-        $jumlahberjalan = DB::table('hewans')
-            ->where('status_hewan', '=', 2)
-            ->get();
-        $jumlahbelumberjalan = DB::table('hewans')
-            ->where('status_hewan', '=', 0)
-            ->get();
-        $jumlahmeninggal = DB::table('hewans')
-            ->where('status_hewan', '=', 5)
-            ->get();
-        $pemodals = DB::table('users')
-            ->where('role_id', '=', 3)
-            ->get();
-        $pengadas = DB::table('users')
-            ->where('role_id', '=', 2)
-            ->get();
-        $jumahpenjualan = DB::table('laporans')
-            ->where('id_pemodal', '!=', null)
-            ->get();
-        $jum = 0;
-        $keuntungan = 0;
-        foreach ($jumahpenjualan as $key => $val) {
-            $jum = $jum + $val->jumlah;
-            $keuntungan = $keuntungan + ($val->jumlah * 10 / 100);
+        if (auth()->user()->id == 2) {
+            $hewans = DB::table('hewans')
+                ->get();
+            $jumlahberjalan = DB::table('hewans')
+                ->where('status_hewan', '=', 2)
+                ->where('id_pemodal', '=', 2)
+                ->get();
+            $jumlahbelumberjalan = DB::table('hewans')
+                ->where('status_hewan', '=', 0)
+                ->where('id_pemodal', '=', 2)
+                ->get();
+            $jumlahmeninggal = DB::table('hewans')
+                ->where('status_hewan', '=', 5)
+                ->where('id_pemodal', '=', 2)
+                ->get();
+            $pemodals = DB::table('users')
+                ->where('role_id', '=', 3)
+                ->get();
+            $pengadas = DB::table('users')
+                ->where('role_id', '=', 2)
+                ->get();
+            $jumahpenjualan = DB::table('laporans')
+                ->where('id_pemodal', '!=', null)
+                ->get();
+            $jum = 0;
+            $keuntungan = 0;
+            foreach ($jumahpenjualan as $key => $val) {
+                $jum = $jum + $val->jumlah;
+                $keuntungan = $keuntungan + $jum;
+            }
+            $jumlahhewans = count($hewans);
+            $jumlahpengadas = count($pemodals);
+            $jumlahpemodal = count($pengadas);
+            $jumlahberjalans = count($jumlahberjalan);
+            $jumlahbelumberjalans = count($jumlahbelumberjalan);
+            $jumlahmeninggals = count($jumlahmeninggal);
+        } else if (auth()->user()->id == 3) {
+            $hewans = DB::table('hewans')
+                ->get();
+            $jumlahberjalan = DB::table('hewans')
+                ->where('status_hewan', '=', 2)
+                ->where('id_pemodal', '=', 3)
+                ->get();
+            $jumlahbelumberjalan = DB::table('hewans')
+                ->where('status_hewan', '=', 0)
+                ->where('id_pemodal', '=', 3)
+                ->get();
+            $jumlahmeninggal = DB::table('hewans')
+                ->where('status_hewan', '=', 5)
+                ->where('id_pemodal', '=', 3)
+                ->get();
+            $pemodals = DB::table('users')
+                ->where('role_id', '=', 3)
+                ->get();
+            $pengadas = DB::table('users')
+                ->where('role_id', '=', 2)
+                ->get();
+            $jumahpenjualan = DB::table('laporans')
+                ->where('id_pemodal', '!=', null)
+                ->get();
+            $jum = 0;
+            $keuntungan = 0;
+            foreach ($jumahpenjualan as $key => $val) {
+                $jum = $jum + $val->jumlah;
+                $keuntungan = $keuntungan + $jum;
+            }
+            $jumlahhewans = count($hewans);
+            $jumlahpengadas = count($pemodals);
+            $jumlahpemodal = count($pengadas);
+            $jumlahberjalans = count($jumlahberjalan);
+            $jumlahbelumberjalans = count($jumlahbelumberjalan);
+            $jumlahmeninggals = count($jumlahmeninggal);
+        } else {
+            $hewans = DB::table('hewans')
+                ->get();
+            $jumlahberjalan = DB::table('hewans')
+                ->where('status_hewan', '=', 2)
+                ->get();
+            $jumlahbelumberjalan = DB::table('hewans')
+                ->where('status_hewan', '=', 0)
+                ->get();
+            $jumlahmeninggal = DB::table('hewans')
+                ->where('status_hewan', '=', 5)
+                ->get();
+            $pemodals = DB::table('users')
+                ->where('role_id', '=', 3)
+                ->get();
+            $pengadas = DB::table('users')
+                ->where('role_id', '=', 2)
+                ->get();
+            $jumahpenjualan = DB::table('laporans')
+                ->where('id_pemodal', '!=', null)
+                ->get();
+            $jum = 0;
+            $keuntungan = 0;
+            foreach ($jumahpenjualan as $key => $val) {
+                $jum = $jum + $val->jumlah;
+                $keuntungan = $keuntungan + ($val->jumlah * 10 / 100);
+            }
+            $jumlahhewans = count($hewans);
+            $jumlahpengadas = count($pemodals);
+            $jumlahpemodal = count($pengadas);
+            $jumlahberjalans = count($jumlahberjalan);
+            $jumlahbelumberjalans = count($jumlahbelumberjalan);
+            $jumlahmeninggals = count($jumlahmeninggal);
         }
-        $jumlahhewans = count($hewans);
-        $jumlahpengadas = count($pemodals);
-        $jumlahpemodal = count($pengadas);
-        $jumlahberjalans = count($jumlahberjalan);
-        $jumlahbelumberjalans = count($jumlahbelumberjalan);
-        $jumlahmeninggals = count($jumlahmeninggal);
+
         return view('dashboard', compact('jumlahhewans', 'jumlahpengadas', 'jumlahpemodal', 'jumlahberjalans', 'jumlahbelumberjalans', 'jumlahmeninggals', 'jum', 'keuntungan'));
     }
 

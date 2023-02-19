@@ -49,7 +49,7 @@ class AdminTransferController extends Controller
         $hewans = Hewan::find($request->id_hewan);
         $jumlahbersih = $request->jumlah - $hewans->modal_hewan;
 
-        $pembagian = $jumlahbersih * 45 / 100;
+        $pembagian = $jumlahbersih * 47 / 100;
 
         $totaltransfer = $pembagian + $pembagian;
 

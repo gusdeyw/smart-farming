@@ -10,7 +10,7 @@
             <div class="bg-white rounded-md shadow-lg p-5">
                 {{-- Edit here  --}}
 
-                <form action="{{ route('admin.hewans.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.groups.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
                     <div class="mb-5">
@@ -39,6 +39,14 @@
                     </div>
                     <div class="mb-5">
                         <label for="subject" class="mb-3 block text-base font-medium text-[#07074D]">
+                            Banyaknya Hewan
+                        </label>
+                        <input required type="number" name="banyak_hewan" id="banyak_hewan" placeholder="Harga Hewan"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            value="{{ $model->banyak_hewan }}" />
+                    </div>
+                    <div class="mb-5">
+                        <label for="subject" class="mb-3 block text-base font-medium text-[#07074D]">
                             Modal Hewan
                         </label>
                         <input required type="number" name="modal_hewan" id="modal_hewan" placeholder="Modal Hewan"
@@ -61,20 +69,6 @@
                             placeholder="Target Berat Hewan"
                             class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                             value="{{ $model->target_berat_hewan }}" />
-                    </div>
-                    <div class="mb-5">
-                        <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">
-                            Pengadas
-                        </label>
-                        <select required type="text" name="pengadas" id="pengadas" placeholder="Nama Hewan"
-                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
-                            <option value="">
-                            </option>
-                            @foreach ($pengadas as $re)
-                                <option value="{{ $re->id }}">Pengadas: {{ $re->name }}
-                                </option>
-                            @endforeach
-                        </select>
                     </div>
                     <div class="mb-5">
                         <label for="subject" class="mb-3 block text-base font-medium text-[#07074D]">

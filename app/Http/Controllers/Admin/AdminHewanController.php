@@ -34,10 +34,14 @@ class AdminHewanController extends Controller
     public function create()
     {
         $model = new Hewan();
+        $pengadas = DB::table('users')
+            ->where('role_id', '=', 3)
+            ->get();
         return view(
             'admin.hewans.create',
             compact(
-                'model'
+                'model',
+                'pengadas'
             )
         );
     }
@@ -50,12 +54,20 @@ class AdminHewanController extends Controller
      */
     public function store(Request $request)
     {
+        $pemodal = DB::table('pembagians')
+            ->where('stat', '=', 0)
+            ->orderBy('grup')
+            ->limit(1)
+            ->get();
         $model = new Hewan;
         $model->nama_hewan = $request->nama_hewan;
         $model->jenis_hewan = $request->jenis_hewan;
         $model->harga_hewan = $request->harga_hewan;
         $model->modal_hewan = $request->modal_hewan;
         $model->kontrak_hewan = $request->kontrak_hewan;
+        $model->id_pengadas = $request->pengadas;
+        $model->id_pemodal = $pemodal[0]->id_pemodal;
+        $model->status_hewan = 2;
         $model->target_berat_hewan = $request->target_berat_hewan;
         if ($request->file('gambar')) {
             $file = $request->file('gambar');

@@ -11,7 +11,21 @@
                 Teknis Pengadas<br>
                 <br>
 
-                {!! $model->kontrak_hewan !!}
+                {!! $model->kontrak_group !!}
+            </div>
+            <div class="bg-white rounded-md shadow-lg p-5 mb-3">
+                List Pemodal: <br>
+                <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+                    @foreach ($pemodals as $pemodal)
+                        <li>
+                            {{ $pemodal->nama_pemodal }}
+                        </li>
+                    @endforeach
+                </ul>
+                Jumlah Sapi yang sudah berjalan: {{ $grupNow }}/{{ $model->banyak_sapi }}<br>
+                Total dana terkumpul: IDR {{ number_format($totalDanaTerkumpul) }} dari total IDR
+                {{ number_format($model->banyak_sapi * $model->modal_group) }}<br>
+
             </div>
             <div class="bg-white rounded-md shadow-lg p-5">
                 {{-- Edit here  --}}
@@ -20,11 +34,11 @@
                     @method('POST')
                     <div class="mb-5">
                         <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">
-                            Hewan
+                            Group
                         </label>
-                        <select required type="text" name="id_hewan" id="id_hewan"
+                        <select required type="text" name="id_group" id="id_group"
                             class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
-                            <option value="{{ $model->id }}">Nama hewan: {{ $model->nama_hewan }}
+                            <option value="{{ $model->id }}">Nama group: {{ $model->nama_group }}
                             </option>
                         </select>
                     </div>
@@ -62,9 +76,10 @@
                         <label for="subject" class="mb-3 block text-base font-medium text-[#07074D]">
                             Jumlah Bayar
                         </label>
-                        <input required type="number" name="jumlah_bayar" id="jumlah_bayar" placeholder="Jumlah Bayar"
+                        <input required max="{{ $model->modal_group }}" type="number" name="jumlah_bayar"
+                            id="jumlah_bayar" placeholder="Jumlah Bayar"
                             class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                            value="{{ $model->modal_hewan }}" />
+                            value="{{ $model->modal_group }}" />
                     </div>
                     <div class="mb-5">
                         <label for="subject" class="mb-3 block text-base font-medium text-[#07074D]">

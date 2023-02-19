@@ -22,7 +22,7 @@
                                     Rp.{{ number_format($hewan->modal_group) }}</p>
                                 <p class=" font-semibold mb-2 leading-relaxed">Harga Jual:
                                     Rp.{{ number_format($hewan->harga_group) }}</p>
-                                <form action="{{ route('pemodal.items.update', $hewan->id) }}" method="POST">
+                                <form action="{{ route('admin.project.update', $hewan->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <button type="submit"

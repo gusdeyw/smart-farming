@@ -20,6 +20,9 @@
                                     <div class="font-semibold text-left">Nama Hewan</div>
                                 </th>
                                 <th class="p-2 whitespace-nowrap">
+                                    <div class="font-semibold text-left">ID Hewan</div>
+                                </th>
+                                <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Kondisi Hewan</div>
                                 </th>
                                 <th class="p-2 whitespace-nowrap">
@@ -27,6 +30,9 @@
                                 </th>
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Berat Hewan</div>
+                                </th>
+                                <th class="p-2 whitespace-nowrap">
+                                    <div class="font-semibold text-left">Status Berat Badan</div>
                                 </th>
                                 <th class="p-2 whitespace-nowrap">
                                     <div class="font-semibold text-left">Foto Kondisi</div>
@@ -56,6 +62,11 @@
                                     </td>
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
+                                            {{ $hewan->id_hewan }}
+                                        </div>
+                                    </td>
+                                    <td class="p-2 whitespace-nowrap">
+                                        <div class="text-left">
                                             {{ $hewan->kondisi_hewan }}
                                         </div>
                                     </td>
@@ -67,6 +78,20 @@
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
                                             {{ $hewan->berat_hewat }} Kg
+                                        </div>
+                                    </td>
+                                    <td class="p-2 whitespace-nowrap">
+                                        <div class="text-left">
+                                            @if ($hewan->status_berat == 'Tidak Bertambah')
+                                                <p class="p-2 bg-gray-300 rounded-sm">Tidak Bertambah <i
+                                                        class="fa-solid fa-square-minus"></i></p>
+                                            @elseif ($hewan->status_berat == 'Bertambah')
+                                                <p class="p-2 bg-green-400 rounded-sm">Bertambah <i
+                                                        class="fa-solid fa-square-up"></i></p>
+                                            @elseif ($hewan->status_berat == 'Berkurang')
+                                                <p class="p-2 bg-yellow-400 rounded-sm">Berkurang <i
+                                                        class="fa-solid fa-square-down"></i></p>
+                                            @endif
                                         </div>
                                     </td>
                                     <td class="p-2 whitespace-nowrap">

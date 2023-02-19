@@ -16,8 +16,8 @@
             @endif
             <div class="bg-white rounded-md shadow-lg p-5">
                 {{-- Edit here  --}}
-                <div class="">
-                    <table id="table" class="table-auto w-full">
+                <div class="overflow-auto">
+                    <table id="table" class="table-auto">
                         <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                             <tr>
                                 <th class="p-2 whitespace-nowrap">
@@ -72,7 +72,7 @@
                                                     Konfirmasi
                                                 </button>
                                             @elseif($transaksi->status_transaksi == 1)
-                                                <form action="{{ route('admin.transaksis.edit', $transaksi->id) }}"
+                                                {{-- <form action="{{ route('admin.transaksis.edit', $transaksi->id) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('GET')
@@ -80,7 +80,7 @@
                                                         class="p-2 rounded-sm shadow-sm bg-green-500 text-white font-medium hover:bg-green-300">
                                                         Daftar Pengadas
                                                     </button>
-                                                </form>
+                                                </form> --}}
                                             @endif
                                         </div>
                                     </td>
@@ -135,7 +135,7 @@
                                     </td>
                                     <td class="p-2 whitespace-nowrap">
                                         <div class="text-left">
-                                            {{ $transaksi->nama_hewans }}
+                                            {{ $transaksi->nama_groups }}
                                         </div>
                                     </td>
                                 </tr>
